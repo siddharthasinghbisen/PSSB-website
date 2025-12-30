@@ -491,35 +491,43 @@ if (canvas) {
 
   // Simple hero slider (autoplay)
   const slides = Array.from(document.querySelectorAll('.slide'));
-  let slideIndex = 0;
-  let slideTimer = null;
-  function showSlide(i) {
-    slides.forEach((s, idx) => s.classList.toggle('active', idx === i));
-  }
-  function startSlider() {
-  if (slides.length <= 1) return;
+let slideIndex = 0;
+let slideTimer = null;
+let resumeTimer = null;
 
-  // First transition happens sooner
-  setTimeout(() => {
-    slideIndex = (slideIndex + 1) % slides.length;
-    showSlide(slideIndex);
-
-    // Normal autoplay after that
-    slideTimer = setInterval(() => {
-      slideIndex = (slideIndex + 1) % slides.length;
-      showSlide(slideIndex);
-    }, 5000);
-
-  }, 1800); // ⬅ first delay (1.8s feels perfect)
+function showSlide(i) {
+  slides.forEach((s, idx) => s.classList.toggle('active', idx === i));
 }
 
-  function stopSlider() { if (slideTimer) { clearInterval(slideTimer); slideTimer = null; } }
-  startSlider();
+function startSlider(delay = 5000) {
+  stopSlider();
+
+  slideTimer = setTimeout(() => {
+    slideIndex = (slideIndex + 1) % slides.length;
+    showSlide(slideIndex);
+    startSlider(5000);
+  }, delay);
+}
+
+function stopSlider() {
+  if (slideTimer) {
+    clearTimeout(slideTimer);
+    slideTimer = null;
+  }
+  if (resumeTimer) {
+    clearTimeout(resumeTimer);
+    resumeTimer = null;
+  }
+}
+
+startSlider(1800); // fast first transition
+
   // Pause autoplay on hover
 const heroEl = document.querySelector('.hero');
 if (heroEl) {
-  heroEl.addEventListener('mouseenter', stopSlider);
-  heroEl.addEventListener('mouseleave', startSlider);
+heroEl.addEventListener('mouseenter', stopSlider);
+heroEl.addEventListener('mouseleave', () => startSlider());
+
 }
 
 
@@ -527,21 +535,27 @@ if (heroEl) {
 const prevArrow = document.querySelector('.hero-arrow.prev');
 const nextArrow = document.querySelector('.hero-arrow.next');
 
+function resumeAutoplayLater() {
+  if (resumeTimer) clearTimeout(resumeTimer);
+  resumeTimer = setTimeout(() => startSlider(), 5500);
+}
+
 if (prevArrow && nextArrow) {
   prevArrow.addEventListener('click', () => {
     stopSlider();
     slideIndex = (slideIndex - 1 + slides.length) % slides.length;
     showSlide(slideIndex);
-    startSlider();
+    resumeAutoplayLater();
   });
 
   nextArrow.addEventListener('click', () => {
     stopSlider();
     slideIndex = (slideIndex + 1) % slides.length;
     showSlide(slideIndex);
-    startSlider();
+    resumeAutoplayLater();
   });
 }
+
 
 
   // Annotation mode controls
@@ -751,8 +765,6 @@ document.addEventListener('DOMContentLoaded', () => {
       return { el, show, hide };
     }
   });
-  const prevArrow = document.querySelector('.hero-arrow.prev');
-const nextArrow = document.querySelector('.hero-arrow.next');
 
 if (prevArrow && nextArrow) {
   prevArrow.addEventListener('click', () => {
