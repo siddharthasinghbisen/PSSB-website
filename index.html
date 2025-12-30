@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>PSSB Technologies — Annotation & QA</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="site-header" id="top">
+    <div class="brand"><a href="#top"><img src="assets/test2.jpg" alt="PSSB Technologies" class="brand-logo"></a></div>
+    <nav class="nav">
+      <a href="#services">Services</a>
+      <a href="#use-cases">Use Cases</a>
+      <a href="#how">How We Work</a>
+      <a href="#why">Why</a>
+      <a href="#about">About</a>
+      <a href="#about">Contact</a>
+      <img src="assets/ori_logo.png" alt="PSSB Icon" class="nav-icon">
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-slider">
+        <div class="slide active"> 
+          <img src="assets/human_detection_output.jpg" alt="Technology">
+          <div class="slide-content">
+            <h1>PSSB Technologies</h1>
+            <p class="subtitle">Precision Data Annotation for Real-World AI Systems</p>
+            <p class="tag">We help AI teams build reliable computer vision and infrastructure intelligence systems through high-quality, scalable annotation and validation services.</p>
+
+          </div>
+        </div>
+        <div class="slide">
+          <img src="assets/man-5638146_1920.jpg" alt="Human Detection">
+          <div class="slide-content">
+            <h2>High-Quality Data Annotation for Modern AI</h2>
+            <p>Reliable datasets that power real-world vision systems.</p>
+          </div>
+        </div>
+        <div class="slide">
+          <img src="assets/lidar 2.jpg" alt="Lidar">
+          <div class="slide-content">
+            <h2>Accuracy You Can Trust</h2>
+            <p>Precision annotation and QA for dependable model performance.</p>
+          </div>
+        </div>
+        
+
+
+      </div>
+
+      <div class="hero-overlay"></div>
+
+      <canvas id="annot-canvas" aria-label="annotation-canvas"></canvas>
+      <img id="annot-img" src="assets/iceland-1979445_1920_1920x900.jpg" alt="Annotation image" style="display:none;">
+
+      <button id="start-annot" class="cta small-cta">Try annotating, can you beat the best in class?</button>
+      <button id="close-annot" class="close-annot" aria-label="Close annotation" style="display:none;">✕</button>
+
+      <div class="hero-controls">
+        <div id="score" class="score" aria-live="polite"></div>
+      </div>
+      <button class="hero-arrow prev" aria-label="Previous slide">‹</button>
+      <button class="hero-arrow next" aria-label="Next slide">›</button>
+    </section>
+
+    <section id="services" class="section fade-up">
+      <h2>What We Do</h2>
+      <p class="lead">High-quality annotation and process-first QA for computer vision systems.</p>
+      
+      <div class="service-tabs">
+        <button class="tab-btn active" data-tab="2d">2D Annotation</button>
+        <button class="tab-btn" data-tab="3d">3D / LiDAR</button>
+        <button class="tab-btn" data-tab="segmentation">Segmentation</button>
+        <button class="tab-btn" data-tab="keypoint">Keypoint Annotation</button>
+      </div>
+
+      <div class="service-demo active" id="demo-2d">
+        <div class="demo-video-container">
+          <video autoplay muted loop playsinline><source src="assets/demo-2d.mp4" type="video/mp4"></video>
+          <div class="demo-overlay"></div>
+        </div>
+        <div class="service-details">
+          <h3>2D Image Annotation</h3>
+          <p>Bounding boxes, polygons, segmentation masks, and keypoint labeling for precise object detection tasks.</p>
+          <ul class="features">
+            <li>Bounding box annotation</li>
+            <li>Polygon & free-form segmentation</li>
+            <li>Keypoint tracking</li>
+            <li>Multi-class labeling</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="service-demo" id="demo-3d">
+        <div class="demo-video-container">
+          <video autoplay muted loop playsinline><source src="assets/demo-3d.mp4" type="video/mp4"></video>
+          <div class="demo-overlay"></div>
+        </div>
+        <div class="service-details">
+          <h3>3D / LiDAR Annotation</h3>
+          <p>3D cuboid annotation, point cloud segmentation, and trajectory labeling for autonomous vehicles.</p>
+          <ul class="features">
+            <li>3D bounding boxes (cuboids)</li>
+            <li>Point cloud segmentation</li>
+            <li>Trajectory annotation</li>
+            <li>LiDAR + RGB fusion</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="service-demo" id="demo-segmentation">
+        <div class="demo-video-container">
+          <video autoplay muted loop playsinline><source src="assets/demo-segmentation.mp4" type="video/mp4"></video>
+          <div class="demo-overlay"></div>
+        </div>
+        <div class="service-details">
+          <h3>Semantic & Instance Segmentation</h3>
+          <p>Pixel-level dense labeling for scene understanding and defect identification in utilities.</p>
+          <ul class="features">
+            <li>Semantic segmentation masks</li>
+            <li>Instance segmentation</li>
+            <li>Panoptic segmentation</li>
+            <li>Defect detection</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="service-demo" id="demo-keypoint">
+        <div class="demo-video-container">
+          <video autoplay muted loop playsinline><source src="assets/demo-keypoint.mp4" type="video/mp4"></video>
+          <div class="demo-overlay"></div>
+        </div>
+        <div class="service-details">
+          <h3>Keypoint Annotation</h3>
+          <p>Label human/part keypoints for pose estimation and tracking.</p>
+          <ul class="features">
+            <li>Pose keypoints</li>
+            <li>Facial landmarks</li>
+            <li>Fine-grained part labeling</li>
+            <li>Multi-instance support</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cards" style="margin-top: 48px;">
+        <div class="card"><h4>Domain Expertise</h4><p>Utilities & infrastructure inspections, powerline asset monitoring.</p></div>
+        <div class="card"><h4>QA & Consistency</h4><p>Multi-layer quality assurance and inter-annotator agreement audits.</p></div>
+        <div class="card"><h4>Tool-Agnostic</h4><p>CVAT, Labelbox, or custom tooling — we adapt to your workflow.</p></div>
+        <div class="card"><h4>Scalable & Controlled</h4><p>Reliable scale without sacrificing accuracy or data security.</p></div>
+        <div class="card">
+          <h4>3D / LiDAR</h4>
+          <p>Point cloud annotation and LiDAR segmentation for autonomous systems.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="use-cases" class="section fade-up">
+      <h2>Use Cases</h2>
+      <p>We work with teams building AI systems where accuracy, consistency, and domain understanding matter.</p>
+      <div class="cards">
+        <div class="card">
+          <h4>General Computer Vision Applications</h4>
+          <p>Scalable annotation support for custom vision tasks across retail, industrial, and enterprise AI use cases.</p>
+        </div>
+        <div class="card">
+          <h4>Autonomous &amp; Mobility Systems</h4>
+          <p>High-quality labeling of images, videos, and sensor data for perception models operating in complex, real-world environments.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="how" class="section fade-up">
+      <h2>How We Work — Our Approach</h2>
+      <p>We follow a structured, quality-first workflow designed to reduce iteration cycles and improve model performance.</p>
+      <div class="cols">
+        <div>
+          <h4>Requirement Alignment</h4>
+          <p>We understand your data, labeling guidelines, and model objectives before starting production.</p>
+        </div>
+        <div>
+          <h4>Pilot &amp; Sample Validation</h4>
+          <p>Small test batches to align on quality expectations and edge cases.</p>
+        </div>
+      </div>
+      <div class="cols">
+        <div>
+          <h4>Production Annotation</h4>
+          <p>Trained annotators execute at scale using defined guidelines and internal checks.</p>
+        </div>
+        <div>
+          <h4>Quality Assurance</h4>
+          <p>Multi-level review to ensure accuracy, consistency, and guideline adherence.</p>
+        </div>
+      </div>
+      <h4>Delivery &amp; Feedback Loop</h4>
+      <p>Clean, validated datasets delivered on time, with room for iteration if needed.</p>
+    </section>
+
+    <section id="why" class="section fade-up">
+      <h2>Why PSSB Technologies</h2>
+      <p>Why Teams Choose Us</p>
+      <div class="cards">
+        <div class="card"><h4>Quality Over Speed, Always</h4><p>We prioritize accuracy and consistency because poor data costs more than slow data.</p></div>
+        <div class="card"><h4>Domain-Aware Execution</h4><p>Experience in infrastructure and utility inspections helps us annotate with real-world context.</p></div>
+        <div class="card"><h4>Scalable &amp; Flexible Teams</h4><p>We scale based on project needs while maintaining quality controls.</p></div>
+        <div class="card"><h4>Tool &amp; Platform Agnostic</h4><p>We adapt to your tools, formats, and workflows — not the other way around.</p></div>
+      </div>
+    </section>
+
+    <section id="about" class="section fade-up">
+      <h2>About & Contact</h2>
+      <div class="about-content">
+        <div class="about-text">
+          <h3>About PSSB Technologies</h3>
+          <p>PSSB Technologies is an AI data services company focused on annotation, validation, and quality assurance for computer vision and infrastructure intelligence systems.</p>
+          <p>We support startups, enterprises, and research teams by delivering reliable, well-structured datasets that improve model performance and reduce downstream risk.</p>
+          <p><strong>Location:</strong> India<br><strong>Service Coverage:</strong> Global</p>
+        </div>
+        <div class="contact-text">
+          <h3>Let's Work Together</h3>
+          <p>If you are building AI systems and need reliable data annotation support, we'd be happy to discuss your requirements.</p>
+          <div class="contact-info">
+            <p>📧 <a href="mailto:siddharthasinghbisen96@gmail.com">siddharthasinghbisen96@gmail.com</a></p>
+            <p>📞 <a href="tel:+916303285150">+91 6303285150</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+    
+    <section id="team" class="section fade-up">
+      <h2 class="section-title">Our Team</h2>
+
+      <div class="partners-slider">
+        <button class="ps-btn prev" aria-label="Previous partner">‹</button>
+
+        <div class="ps-track">
+          <div class="partner-slide" data-index="0">
+            <div class="partner-left">
+              <img src="assets/pradeep.jpg" alt="Pradeep Siddhartha Singh Bisen">
+            </div>
+            <div class="partner-right">
+              <h3>Pradeep Siddhartha Singh Bisen</h3>
+              <p class="partner-title">Proprietor &amp; Founder — PSSB Technologies</p>
+              <p class="partner-excerpt">Founder and Proprietor of PSSB Technologies with 7+ years in machine learning, AI operations, and computer vision data systems. Experienced in large-scale annotation operations and quality-driven data delivery.</p>
+              <button class="view-profile">View profile</button>
+              <div class="partner-full" hidden>
+                <p>Pradeep brings professional experience from Jeppesen (a Boeing Company) and Arkion, a Stockholm-based powerline inspection company. His work spans AI research, large-scale annotation operations, and quality-driven data delivery for real-world computer vision systems. Contact: +91 6303285150.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="partner-slide" data-index="1">
+            <div class="partner-left">
+              <img src="assets/WhatsApp Image 2025-12-30 at 4.22.36 PM.jpeg" alt="Dr. Apoorva Singh">
+            </div>
+            <div class="partner-right">
+              <h3>Dr. Apoorva Singh</h3>
+              <p class="partner-title">Head of Quality Assurance &amp; Finance Operations — PSSB Technologies</p>
+              <p class="partner-excerpt">Dr. Apoorva Singh leads Quality Assurance and Finance Operations, ensuring operational accuracy, compliance, and consistent delivery across project engagements.</p>
+              <button class="view-profile">View profile</button>
+              <div class="partner-full" hidden>
+                <p>Dr. Apoorva Singh is responsible for maintaining quality standards across project deliveries while supporting financial processes, including invoice tracking and internal accounting coordination. Her role ensures consistent execution of client engagements and alignment between technical and financial workflows.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button class="ps-btn next" aria-label="Next partner">›</button>
+      </div>
+
+      <div class="ps-dots" role="tablist" aria-label="Partners navigation"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <small>(c) PSSB Technologies - Built for reliable AI data operations.</small>
+  </footer>
+
+  <div id="result-modal" class="result-modal">
+    <div class="result-modal-content">
+      <div id="result-text" class="result-text"></div>
+      <button id="result-ok-btn" class="result-ok-btn">OK</button>
+    </div>
+  </div>
+
+  <script>
+     window.GT_DATA_URL = 'assets/animal_segmentation_gt.json';
+  </script>
+  <script src="js/main.js"></script>
+</body>
+</html>
