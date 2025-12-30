@@ -520,7 +520,7 @@ function stopSlider() {
   }
 }
 
-startSlider(1800); // fast first transition
+startSlider(4000); // fast first transition
 
   // Pause autoplay on hover
 const heroEl = document.querySelector('.hero');
